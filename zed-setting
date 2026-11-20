@@ -1,0 +1,112 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte - No Italics",
+    "dark": "One Dark",
+  },
+  "icon_theme": "Catppuccin Latte",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "buffer_font_family": "Maple Mono NF",
+
+  // 保存与自动保存行为
+  "format_on_save": "on",
+  "autosave": "on_focus_change",
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+
+  // 作用域/章节标题吸顶（Sticky Scroll）
+  "sticky_scroll": {
+    "enabled": true,
+  },
+
+  // 彩虹括号与作用域参考线
+  "colorize_brackets": true,
+  "indent_guides": {
+    "enabled": true,
+    "line_width": 1,
+    "active_line_width": 2,
+    "coloring": "indent_aware",
+    "background_coloring": "disabled",
+  },
+
+  // 光标动效（平滑移动）
+  "cursor_animation": {
+    "enabled": true,
+  },
+
+  // 空白字符提示（"all" 始终显示；可选 "boundary" 或 "selection"）
+  "show_whitespaces": "all",
+
+  // 语言服务器内联提示（Inlay Hints）
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+  },
+
+  // Git 集成与内联 blame 延时缓冲
+  "git": {
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 400,
+    },
+  },
+
+  // 集成终端
+  "terminal": {
+    "font_family": "Maple Mono CN",
+    "dock": "bottom",
+    "button": true,
+    "working_directory": "current_project_directory",
+  },
+
+  // 针对特定语言设置
+  "languages": {
+    "Typst": {
+      "soft_wrap": "editor_width",
+    },
+  },
+
+  "git_panel": {
+    "tree_view": true,
+  },
+  "project_panel": {
+    "dock": "left",
+  },
+  "agent_servers": {},
+  "agent": {
+    "terminal_init_command": "",
+    "sandbox_permissions": {
+      "allow_all_hosts": true,
+      "network_hosts": ["api.github.com", "github.com"],
+    },
+    "default_model": {
+      "effort": "HIGH",
+      "speed": "fast",
+      "provider": "zed.dev",
+      "model": "gemini-4-argon",
+      "enable_thinking": true,
+    },
+    "tool_permissions": {
+      "default": "allow",
+      "tools": {
+        "terminal": {
+          "default": "allow",
+        },
+      },
+    },
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+}
