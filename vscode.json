@@ -1,15 +1,142 @@
 {
-    //------------------------------LaTeX 配置----------------------------------
-    // 设置是否自动编译
+    // =========================================================================
+    // 1. 编辑器基础与排版 (Editor & Typography)
+    // =========================================================================
+    // 字体设置：Maple Mono NF CN 优先以开启连字与中文/图标支持，回退至 Cascadia Code、Consolas
+    "editor.fontFamily": "'Maple Mono NF CN', 'Cascadia Code', Consolas, monospace",
+    // 开启编程连字支持 (==, !=, =>, -> 等组合符)
+    "editor.fontLigatures": true,
+    // 光标平滑呼吸与移动动画
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on",
+    // 编辑器与列表平滑滚动
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    // 彩虹括号与活动作用域参考线
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    // 仅在选中文本时显示空白字符
+    "editor.renderWhitespace": "selection",
+    // 关闭右侧小地图以获得更专注的视野
+    "editor.minimap.enabled": false,
+    // 自动折行及高级折行策略（对中文排版极友好）
+    "editor.wordWrap": "on",
+    "editor.wrappingStrategy": "advanced",
+    // 中文环境下的 Unicode 高亮优化（避免中文字符/标点误报黄色告警）
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.unicodeHighlight.allowedLocales": {
+        "zh-hans": true
+    },
+    "editor.unicodeHighlight.allowedCharacters": {
+        "‐": true
+    },
+    // =========================================================================
+    // 2. 文件与保存行为 (Files & Format On Save)
+    // =========================================================================
+    // 保存时自动格式化
+    "editor.formatOnSave": true,
+    // 粘贴时自动格式化
+    "editor.formatOnPaste": true,
+    // 保存时自动去除行尾多余空格
+    "files.trimTrailingWhitespace": true,
+    // 保存时确保文件末尾保留单个空行 (符合 POSIX 标准)
+    "files.insertFinalNewline": true,
+    // 默认统一换行符为 LF
+    "files.eol": "\n",
+    // =========================================================================
+    // 3. 工作台与界面 (Workbench & Window)
+    // =========================================================================
+    // 主题
+    "workbench.colorTheme": "Catppuccin Latte",
+    // 隐藏空白工作区欢迎提示
+    "workbench.editor.empty.hint": "hidden",
+    // 评论视图关闭策略
+    "comments.openView": "never",
+    // 会话视图垂直堆叠
+    "chat.viewSessions.orientation": "stacked",
+    // =========================================================================
+    // 4. 集成终端 (Integrated Terminal)
+    // =========================================================================
+    // 终端默认使用 PowerShell 7 (pwsh)
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    // 终端字体配置（支持 Maple Mono 的 Nerd Font 图标）
+    "terminal.integrated.fontFamily": "'Maple Mono NF CN', monospace",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "path": "C:\\Users\\hi\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash",
+            "icon": "terminal-git-bash"
+        }
+    },
+    // =========================================================================
+    // 5. 版本控制 (Git)
+    // =========================================================================
+    // 自动从远程获取更新
+    "git.autofetch": true,
+    // 允许在上层目录寻找并打开 Git 仓库
+    "git.openRepositoryInParentFolders": "always",
+    // 禁用添加 AI 共同作者
+    "git.addAICoAuthor": "off",
+    // =========================================================================
+    // 6. LaTeX 排版配置 (LaTeX Workshop)
+    // =========================================================================
+    // 格式化器设置
+    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.latexindent.path": "latexindent",
+    "latex-workshop.latexindent.args": [
+        "-l",
+        "-w"
+    ],
+    // 编译触发模式：never（手动选择 recipe 编译，避免大文档频繁自动构建）
     "latex-workshop.latex.autoBuild.run": "never",
-    //右键菜单
+    // 默认执行上次使用的 recipe
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    // 右键上下文菜单与包智能补全
     "latex-workshop.showContextMenu": true,
-    //从使用的包中自动补全命令和环境
     "latex-workshop.intellisense.package.enabled": true,
-    //编译出错时设置是否弹出气泡设置
+    // 静默警告与错误气泡弹窗
     "latex-workshop.message.error.show": false,
     "latex-workshop.message.warning.show": false,
-    // 编译工具和命令
+    // PDF 查看器与双击反向同步跳转 (SyncTeX)
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.ref.viewer": "auto",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    // 编译失败时自动清理辅助文件
+    "latex-workshop.latex.autoClean.run": "onFailed",
+    // 辅助文件清理匹配列表
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk"
+    ],
+    // 编译工具定义 (Tools)
     "latex-workshop.latex.tools": [
         {
             "name": "xelatex",
@@ -44,6 +171,18 @@
             ]
         },
         {
+            "name": "xelatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-xelatex",
+                "-outdir=%OUTDIR%",
+                "%DOCFILE%"
+            ]
+        },
+        {
             "name": "bibtex",
             "command": "bibtex",
             "args": [
@@ -58,7 +197,7 @@
             ]
         }
     ],
-    // 用于配置编译链
+    // 编译链配置 (Recipes)
     "latex-workshop.latex.recipes": [
         {
             "name": "XeLaTeX",
@@ -72,21 +211,20 @@
                 "pdflatex"
             ]
         },
-        /*{
-            "name": "BibTeX",
+        {
+            "name": "latexmk (自动多轮 PDFLaTeX)",
             "tools": [
-                "bibtex"
+                "latexmk"
             ]
         },
         {
-            "name": "Biber",
+            "name": "xelatexmk (自动多轮 XeLaTeX)",
             "tools": [
-                "biber"
+                "xelatexmk"
             ]
         },
-        */
         {
-            "name": "xelatex -> bibtex -> xelatex*2",
+            "name": "XeLaTeX -> BibTeX -> XeLaTeX*2",
             "tools": [
                 "xelatex",
                 "bibtex",
@@ -95,7 +233,7 @@
             ]
         },
         {
-            "name": "xelatex -> biber -> xelatex*2",
+            "name": "XeLaTeX -> Biber -> XeLaTeX*2",
             "tools": [
                 "xelatex",
                 "biber",
@@ -104,66 +242,87 @@
             ]
         },
         {
-            "name": "pdflatex -> bibtex -> pdflatex*2",
+            "name": "PDFLaTeX -> BibTeX -> PDFLaTeX*2",
             "tools": [
                 "pdflatex",
                 "bibtex",
                 "pdflatex",
                 "pdflatex"
             ]
+        },
+        {
+            "name": "PDFLaTeX -> Biber -> PDFLaTeX*2",
+            "tools": [
+                "pdflatex",
+                "biber",
+                "pdflatex",
+                "pdflatex"
+            ]
         }
     ],
-    //文件清理。此属性必须是字符串数组
-    "latex-workshop.latex.clean.fileTypes": [
-        "*.aux",
-        "*.bbl",
-        "*.blg",
-        "*.idx",
-        "*.ind",
-        "*.lof",
-        "*.lot",
-        "*.out",
-        "*.toc",
-        "*.acn",
-        "*.acr",
-        "*.alg",
-        "*.glg",
-        "*.glo",
-        "*.gls",
-        "*.ist",
-        "*.fls",
-        "*.log",
-        "*.fdb_latexmk"
-    ],
-    //设置为onFaild 在构建失败后清除辅助文件
-    "latex-workshop.latex.autoClean.run": "onFailed",
-    // 使用上次的recipe编译组合
-    "latex-workshop.latex.recipe.default": "lastUsed",
-    // 用于反向同步的内部查看器的键绑定。ctrl/cmd +点击(默认)或双击
-    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
-    //使用 SumatraPDF 预览编译好的PDF文件
-    // 设置VScode内部查看生成的pdf文件
-    "latex-workshop.view.pdf.viewer": "tab",
-    // PDF查看器用于在\ref上的[View on PDF]链接
-    "latex-workshop.view.pdf.ref.viewer": "auto",
+    // =========================================================================
+    // 7. Typst 排版配置 (Tinymist)
+    // =========================================================================
+    // Typst 格式化程序：使用 typstyle
     "tinymist.formatterMode": "typstyle",
-    "security.workspace.trust.untrustedFiles": "open",
-    "editor.unicodeHighlight.nonBasicASCII": false,
+    // =========================================================================
+    // 8. 语言特定配置 (Language Specific Settings)
+    // =========================================================================
+    "[latex]": {
+        "editor.defaultFormatter": "James-Yu.latex-workshop",
+        "editor.formatOnSave": true
+    },
     "[typst]": {
+        "editor.defaultFormatter": "myriad-dreamin.tinymist",
+        "editor.formatOnSave": true,
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
     },
     "[typst-code]": {
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
     },
-    "git.autofetch": true,
-    "python.defaultInterpreterPath": "C:\\Users\\hi\\anaconda3\\envs\\torch_env\\python.exe",
-    "github.copilot.advanced": {
-        "authProvider": "github"
+    "[python]": {
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.defaultColorDecorators": "never"
     },
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "git.openRepositoryInParentFolders": "always",
-    "workbench.editorAssociations": {
-        "*.save": "default"
+    "[html]": {
+        "editor.formatOnSave": false
     },
+    // =========================================================================
+    // 9. 安全、网络与工具白名单 (Security, Network & Tools)
+    // =========================================================================
+    // 彻底停用工作区信任以避免无谓弹窗
+    "security.workspace.trust.enabled": false,
+    // 流量计费网络连接检测关闭
+    "network.meteredConnection": "off",
+    // 对话工具 URL 自动放行
+    "chat.tools.urls.autoApprove": {
+        "https://code.visualstudio.com": true,
+        "https://github.com/microsoft/vscode/wiki/*": true,
+        "https://typst.app": {
+            "approveRequest": true,
+            "approveResponse": false
+        },
+        "https://*.readthedocs.io": true
+    },
+    "window.density.layout": "compact",
+    "workbench.activityBar.location": "bottom",
+    "github.copilot.chat.tools.viewImage.enabled": false,
+    "github.copilot.chat.exploreAgent.enabled": false,
+    "github.copilot.chat.gemini35FlashReducedToolUsePrompt.enabled": false,
+    "github.copilot.chat.copilotDebugCommand.enabled": false,
+    "github.copilot.chat.geminiFlashPromptAdditions.enabled": false,
+    "github.copilot.chat.gpt55ReadFileTool.enabled": false,
+    "github.copilot.chat.gpt56Verbosity.enabled": false,
+    "github.copilot.chat.gpt55GetChangedFilesTool.enabled": false,
+    "github.copilot.chat.newWorkspaceCreation.enabled": false,
+    "github.copilot.chat.setupTests.enabled": false,
+    "github.copilot.chat.summarizeAgentConversationHistory.enabled": false,
+    "github.copilot.chat.updated53CodexPrompt.enabled": false,
+    "github.copilot.chat.agent.currentEditorContext.enabled": false,
+    "github.copilot.chat.anthropic.useMessagesApi": false,
+    "github.copilot.chat.cloudAgent.enabled": false,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": false,
+    "github.copilot.chat.customInstructionsInSystemMessage": false,
+    "github.copilot.chat.imageUpload.enabled": false,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
 }
